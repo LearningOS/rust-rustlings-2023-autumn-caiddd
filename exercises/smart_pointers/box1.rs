@@ -18,13 +18,16 @@
 //
 // Execute `rustlings hint box1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+
 
 #[derive(PartialEq, Debug)]
 pub enum List {
-    Cons(i32, List),
+    Cons(i32, Box<List>),
     Nil,
 }
+
+use List::Nil;
+use List::Cons;
 
 fn main() {
     println!("This is an empty cons list: {:?}", create_empty_list());
@@ -35,11 +38,11 @@ fn main() {
 }
 
 pub fn create_empty_list() -> List {
-    todo!()
+    Nil
 }
 
 pub fn create_non_empty_list() -> List {
-    todo!()
+    Cons(1, Box::new(Cons(1, Box::new(Nil))))
 }
 
 #[cfg(test)]
